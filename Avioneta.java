@@ -37,7 +37,12 @@ public class Avioneta extends Avion {
         return null;
     }
     
-    // Getters adicionales
+    @Override
+    public boolean actualizarInfo(String nombre, String matricula, int autonomiaKm) {
+        throw new UnsupportedOperationException("Método no implementado en Avioneta");
+    }
+    
+    
     public int getNumPasajeros() { return numPasajeros; }
     public ArrayList<Pasajero> getPasajeros() { return pasajeros; }
 }

@@ -5,10 +5,32 @@ public class Biberia {
     
     public Biberia() {
         this.aeropuertos = new ArrayList<>();
-        // Inicializar los 3 aeropuertos (1 militar y 2 comerciales)
+        
         aeropuertos.add(new AeropuertoMilitar("Base Aérea Madrid", "Madrid", "Águila Real"));
         aeropuertos.add(new AeropuertoComercial("Barajas", "Madrid", 4));
         aeropuertos.add(new AeropuertoComercial("El Prat", "Barcelona", 3));
+    }
+    
+    
+    public String listarAeropuertosPorCiudad(String ciudad) {
+        StringBuilder resultado = new StringBuilder();
+        resultado.append("Aeropuertos en ").append(ciudad).append(":\n");
+        
+        for (Aeropuerto a : aeropuertos) {
+            if (a.getCiudad().equalsIgnoreCase(ciudad)) {
+                if (a instanceof AeropuertoMilitar) {
+                    AeropuertoMilitar am = (AeropuertoMilitar) a;
+                    resultado.append("- Militar: ").append(am.getNombre())
+                            .append(" (Código: ").append(am.getNombreClave()).append(")\n");
+                } else if (a instanceof AeropuertoComercial) {
+                    AeropuertoComercial ac = (AeropuertoComercial) a;
+                    resultado.append("- Comercial: ").append(ac.getNombre())
+                            .append(" (Terminales: ").append(ac.getNumTerminales()).append(")\n");
+                }
+            }
+        }
+        
+        return resultado.toString();
     }
     
     public String buscarPasajero(String dni) {
@@ -39,11 +61,11 @@ public class Biberia {
         return info.toString();
     }
     
-    // Métodos para acceder a los aeropuertos
+    
     public Aeropuerto getAeropuerto(int index) {
         if (index >= 0 && index < aeropuertos.size()) {
             return aeropuertos.get(index);
         }
         return null;
     }
-}
+}   

@@ -11,7 +11,10 @@ public abstract class Avion {
     
     public abstract String getInfoCompleta();
     
-    // Getters
+  
+    public abstract boolean actualizarInfo(String nombre, String matricula, int autonomiaKm);
+    
+    
     public String getNombre() { return nombre; }
     public String getMatricula() { return matricula; }
     public int getAutonomiaKm() { return autonomiaKm; }

@@ -14,6 +14,20 @@ public class AvionCarga extends Avion {
                "Carga máxima: " + cargaMaximaKg + " kg";
     }
     
-    // Getter adicional
+    @Override
+    public boolean actualizarInfo(String nombre, String matricula, int autonomiaKm) {
+        
+        if (nombre != null && nombre.isEmpty()) return false;
+        if (matricula != null && matricula.isEmpty()) return false;
+        if (autonomiaKm < 0) return false;
+        
+        
+        if (nombre != null) this.nombre = nombre;
+        if (matricula != null) this.matricula = matricula;
+        if (autonomiaKm > 0) this.autonomiaKm = autonomiaKm;
+        
+        return true;
+    }
+    
     public double getCargaMaximaKg() { return cargaMaximaKg; }
 }

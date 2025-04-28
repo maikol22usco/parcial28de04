@@ -18,3 +18,4 @@ public class Pasajero {
     public String getDni() { return dni; }
     public int getEdad() { return edad; }
 }
+

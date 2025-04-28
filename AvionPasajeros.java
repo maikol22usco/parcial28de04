@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class AvionPasajeros extends Avion {
+public class AvionPasajeros extends Avion implements IConsulta {
     private int numPasajeros;
     private ArrayList<Pasajero> pasajeros;
     
@@ -28,6 +28,16 @@ public class AvionPasajeros extends Avion {
         return info.toString();
     }
     
+    @Override
+    public Pasajero buscarPasajeroPorNombre(String nombre) {
+        for (Pasajero p : pasajeros) {
+            if (p.getNombre().equalsIgnoreCase(nombre)) {
+                return p;
+            }
+        }
+        return null;
+    }
+    
     public Pasajero buscarPasajero(String dni) {
         for (Pasajero p : pasajeros) {
             if (p.getDni().equals(dni)) {
@@ -37,7 +47,12 @@ public class AvionPasajeros extends Avion {
         return null;
     }
     
-    // Getters adicionales
+    @Override
+    public boolean actualizarInfo(String nombre, String matricula, int autonomiaKm) {
+        throw new UnsupportedOperationException("Método no implementado en AvionPasajeros");
+    }
+    
+    
     public int getNumPasajeros() { return numPasajeros; }
     public ArrayList<Pasajero> getPasajeros() { return pasajeros; }
 }
